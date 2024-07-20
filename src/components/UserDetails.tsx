@@ -81,6 +81,7 @@ const UserDetails: React.FC = () => {
     if (!user) return;
 
     try {
+      // const response = await fetch(`http://localhost:5000/users/${user.id}`, {
       const response = await fetch(`/.netlify/functions/updateUser?id=${user.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -88,7 +89,8 @@ const UserDetails: React.FC = () => {
       });
 
       if (response.ok) {
-        setUser({ ...user, status: newStatus });
+        const updatedUser = await response.json();
+        setUser(updatedUser);
         setSnackbarMessage(`User ${newStatus === 'Blacklisted' ? 'Blacklisted' : 'Activated'}!`);
         setAlertType(newStatus === 'Blacklisted' ? 'warning' : 'success');
         setSnackbarOpen(true);
@@ -119,11 +121,24 @@ const UserDetails: React.FC = () => {
   );
 
   useEffect(() => {
-    fetch(`/.netlify/functions/getUser?id=${userId}`)
-      .then((response) => response.json())
-      .then((data: User) => setUser(data))
-      .catch((error) => console.error('Fetching error:', error));
-  }, [userId]);
+    if (!userId) return;  // Ensure there is a userId to avoid fetching unnecessarily
+
+  const fetchUserData = async () => {
+    try {
+      // const response = await fetch(`http://localhost:5000/users/${userId}`);
+      const response = await fetch(`/.netlify/functions/getUser?id=${userId}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+      const userData = await response.json();
+      setUser(userData);
+    } catch (error) {
+      console.error('Error fetching user:', error);
+    }
+  };
+
+  fetchUserData();
+}, [userId]);
 
   // if (!user) {
   //   return 
