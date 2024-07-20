@@ -78,7 +78,7 @@ const UserDetails: React.FC = () => {
   };
 
   const updateUserStatus = async (newStatus: User['status']): Promise<void> => {
-    if (!user) return;
+    if (!userId) return;
 
     try {
       // const response = await fetch(`http://localhost:5000/users/${user.id}`, {
@@ -96,7 +96,7 @@ const UserDetails: React.FC = () => {
           throw new Error('Failed to update user status');
         }
       } catch (error) {
-        console.error(`There was a problem with the fetch operation for user ${userId} but ${user.id}:`, error);
+        console.error(`There was a problem with the fetch operation:`, error);
       }
     };
 

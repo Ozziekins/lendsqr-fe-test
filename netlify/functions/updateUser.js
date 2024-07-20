@@ -18,7 +18,7 @@ exports.handler = async (event) => {
 
     data.users[userIndex].status = status;
 
-    fs.writeFileSync(dataPath, JSON.stringify(data));
+    // fs.writeFileSync(dataPath, JSON.stringify(data));
 
     return {
       statusCode: 200,
