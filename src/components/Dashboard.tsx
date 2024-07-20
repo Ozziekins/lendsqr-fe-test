@@ -363,13 +363,18 @@ const applyFilters = (): void => {
 
   useEffect(() => {
     // fetch(`http://localhost:5000/users`)
-    fetch(`/.netlify/functions/getUsers`)
-      .then(response => response.json())
-      .then((data: User[]) => {
-        setAllUsers(data);
-      })
-      .catch(error => console.error('Fetching error:', error));
-  }, []);
+    fetch('/.netlify/functions/getUserss')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch users');
+      }
+      return response.json();
+    })
+    .then((data: User[]) => {
+      setAllUsers(data);
+    })
+    .catch(error => console.error('Fetching error:', error));
+}, []);
   
   // const updateDisplayedUsers = (data: User[]) => {
   //   const start = (currentPage - 1) * pageSize;
