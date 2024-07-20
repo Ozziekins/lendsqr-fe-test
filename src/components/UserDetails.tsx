@@ -81,7 +81,7 @@ const UserDetails: React.FC = () => {
     if (!user) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/users/${user.id}`, {
+      const response = await fetch(`/.netlify/functions/updateUser?id=${user.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
@@ -119,7 +119,7 @@ const UserDetails: React.FC = () => {
   );
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${userId}`)
+    fetch(`/.netlify/functions/getUser?id=${userId}`)
       .then((response) => response.json())
       .then((data: User) => setUser(data))
       .catch((error) => console.error('Fetching error:', error));

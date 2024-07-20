@@ -294,7 +294,7 @@ const applyFilters = (): void => {
     setPaginatedUsers(updatedUsers);
   
     try {
-      const response = await fetch(`http://localhost:5000/users/${userId}`, {
+      const response = await fetch(`/.netlify/functions/getUsers/users/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -342,7 +342,7 @@ const applyFilters = (): void => {
   
 	useEffect(() => {
 		const offset = (currentPage - 1) * pageSize;
-		const url = `http://localhost:5000/users?_start=${offset}&_limit=${pageSize}`;
+		const url = `/.netlify/functions/getUsers?_start=${offset}&_limit=${pageSize}`;
 	
 		fetch(url)
 			.then(response => {
@@ -364,7 +364,7 @@ const applyFilters = (): void => {
 	}, [currentPage, pageSize, filters]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users`)
+    fetch(`/.netlify/functions/getUsers`)
       .then(response => response.json())
       .then((data: User[]) => {
         setAllUsers(data);
