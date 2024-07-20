@@ -355,7 +355,7 @@ const applyFilters = (): void => {
 				setUsers(data);
         if (!Object.values(filters).some(value => value !== '')) {
           setFilteredUsers(data);
-          setAllUsers(data);
+          // setAllUsers(data);
         }
 			})
 			.catch(error => console.error('Fetching error:', error));
