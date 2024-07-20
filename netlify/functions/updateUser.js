@@ -3,8 +3,7 @@ const path = require('path');
 const dataPath = path.join(__dirname, '../../db.json');
 
 exports.handler = async (event) => {
-  const { id } = event.queryStringParameters;
-  const updatedData = JSON.parse(event.body);
+  const { id, status } = event.queryStringParameters; 
   
   try {
     const data = JSON.parse(fs.readFileSync(dataPath));
@@ -17,7 +16,7 @@ exports.handler = async (event) => {
       };
     }
 
-    data.users[userIndex] = {...data.users[userIndex], ...updatedData};
+    data.users[userIndex].status = status;
 
     fs.writeFileSync(dataPath, JSON.stringify(data));
 

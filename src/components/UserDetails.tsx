@@ -82,25 +82,23 @@ const UserDetails: React.FC = () => {
 
     try {
       // const response = await fetch(`http://localhost:5000/users/${user.id}`, {
-      const response = await fetch(`/.netlify/functions/updateUser?id=${user.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus }),
-      });
+        const response = await fetch(`/.netlify/functions/updateUser?id=${user.id}&status=${newStatus}`, {
+          method: 'PATCH',
+        });
 
-      if (response.ok) {
-        const updatedUser = await response.json();
-        setUser(updatedUser);
-        setSnackbarMessage(`User ${newStatus === 'Blacklisted' ? 'Blacklisted' : 'Activated'}!`);
-        setAlertType(newStatus === 'Blacklisted' ? 'warning' : 'success');
-        setSnackbarOpen(true);
-      } else {
-        throw new Error('Failed to update user status');
+        if (response.ok) {
+          const updatedUser = await response.json();
+          setUser(updatedUser);
+          setSnackbarMessage(`User ${newStatus === 'Blacklisted' ? 'Blacklisted' : 'Activated'}!`);
+          setAlertType(newStatus === 'Blacklisted' ? 'warning' : 'success');
+          setSnackbarOpen(true);
+        } else {
+          throw new Error('Failed to update user status');
+        }
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
       }
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  };
+    };
 
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
