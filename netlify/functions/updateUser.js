@@ -6,17 +6,18 @@ exports.handler = async (event) => {
   const { id, status } = event.queryStringParameters; 
   
   try {
-    const data = JSON.parse(fs.readFileSync(dataPath));
-    const userIndex = data.users.findIndex(user => user.id === parseInt(id));
+    console.log(dataPath);
+    // const data = JSON.parse(fs.readFileSync(dataPath));
+    // const userIndex = data.users.findIndex(user => user.id === parseInt(id));
 
-    if (userIndex === -1) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ message: "User not found" })
-      };
-    }
+    // if (userIndex === -1) {
+    //   return {
+    //     statusCode: 404,
+    //     body: JSON.stringify({ message: "User not found" })
+    //   };
+    // }
 
-    data.users[userIndex].status = status;
+    // data.users[userIndex].status = status;
 
     // fs.writeFileSync(dataPath, JSON.stringify(data));
 
