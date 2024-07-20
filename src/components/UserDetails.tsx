@@ -78,11 +78,11 @@ const UserDetails: React.FC = () => {
   };
 
   const updateUserStatus = async (newStatus: User['status']): Promise<void> => {
-    if (!user) return;
+    if (!userId) return;
 
     try {
       // const response = await fetch(`http://localhost:5000/users/${user.id}`, {
-        const response = await fetch(`/.netlify/functions/updateUser?id=${user.id}&status=${newStatus}`, {
+        const response = await fetch(`/.netlify/functions/updateUser?id=${userId}&status=${newStatus}`, {
           method: 'PATCH',
         });
 
