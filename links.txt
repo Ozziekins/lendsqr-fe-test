@@ -1,4 +1,4 @@
-Website - 
+Website - https://ozziekins-lendsqr.netlify.app/
 Github - https://github.com/Ozziekins/lendsqr-fe-test-task
 Notion report - https://sulfuric-brochure-f82.notion.site/Lendsqr-Management-Dashboard-Documentation-968a4e193393414dbf45dbb446b19445
 Loom video - 

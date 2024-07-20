@@ -19,7 +19,7 @@
     <br />
     <a href="mailto:nenubariozioma@gmail.com">Contact</a>
     ·
-    <a href="https://www.linkedin.com/in/ozioma-okonicha/">LinkedIn</a>
+    <a href="https://ozziekins-lendsqr.netlify.app/">Demo</a>
   </p>
 
 
