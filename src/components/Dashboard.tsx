@@ -145,7 +145,6 @@ const Dashboard: React.FC = () => {
   const classes = useStyles(); 
 	const [users, setUsers] = useState<User[]>([]);
   const [allUsers, setAllUsers] = useState<User[]>([]);
-  const [paginatedUsers, setPaginatedUsers] = useState<User[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [pageSize, setPageSize] = useState<number>(5);
 	const [totalItems, setTotalItems] = useState<number>(0);const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -172,7 +171,7 @@ const Dashboard: React.FC = () => {
 
   const handleSearchClick = () => {
     if (!searchTerm.trim()) {
-      setPaginatedUsers(users);
+      setFilteredUsers(users);
     } else {
       const filtered = allUsers.filter(user =>
         user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -180,7 +179,7 @@ const Dashboard: React.FC = () => {
         user.organization.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.phoneNumber.includes(searchTerm)
       );
-      setPaginatedUsers(filtered);
+      setFilteredUsers(filtered);
     }
   };
 
@@ -192,9 +191,9 @@ const Dashboard: React.FC = () => {
     }
   }, []);
   
-  const handleSearchClickDirectly = useCallback((search: string) => {
+  const handleSearchClickDirectly = (search: string) => {
     if (search.trim() === "") {
-      setPaginatedUsers(users); 
+      setFilteredUsers(users); 
     } else {
       const filtered = allUsers.filter(user =>
         user.fullName.toLowerCase().includes(search.toLowerCase()) ||
@@ -202,15 +201,15 @@ const Dashboard: React.FC = () => {
         user.organization.toLowerCase().includes(search.toLowerCase()) ||
         user.phoneNumber.includes(search)
       );
-      setPaginatedUsers(filtered);
+      setFilteredUsers(filtered);
     }
-  }, [users, allUsers]);  
+  };
 
-  useEffect(() => {
-    if (searchTerm && paginatedUsers.length > 0) {
-      handleSearchClickDirectly(searchTerm);
-    }
-  }, [searchTerm, paginatedUsers, handleSearchClickDirectly]); 
+  // useEffect(() => {
+  //   if (searchTerm && filteredUsers.length > 0) {
+  //     handleSearchClickDirectly(searchTerm);
+  //   }
+  // }, [searchTerm, filteredUsers, handleSearchClickDirectly]); 
   
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     setAnchorEl(event.currentTarget);
@@ -240,7 +239,7 @@ const Dashboard: React.FC = () => {
 
 const applyFilters = (): void => {
   if (Object.values(filters).every(value => !value)) {
-    setPaginatedUsers(users);
+    setFilteredUsers(users);
   } else {
     const newFilteredUsers = allUsers.filter(user => {
       return (filters.organization ? user.organization === filters.organization : true) &&
@@ -266,7 +265,6 @@ const applyFilters = (): void => {
       status: ''
     });
     setFilteredUsers(users);
-    setPaginatedUsers(users);
     if (currentPage !== 1) {
       setCurrentPage(1); 
     }
@@ -291,7 +289,6 @@ const applyFilters = (): void => {
   
     setUsers(updatedUsers);
     setFilteredUsers(updatedUsers);
-    setPaginatedUsers(updatedUsers);
   
     try {
       // const response = await fetch(`http://localhost:5000/users/${userId}`, {
@@ -358,7 +355,6 @@ const applyFilters = (): void => {
 				setUsers(data);
         if (!Object.values(filters).some(value => value !== '')) {
           setFilteredUsers(data);
-          setPaginatedUsers(data);
           setAllUsers(data);
         }
 			})
@@ -375,21 +371,11 @@ const applyFilters = (): void => {
       .catch(error => console.error('Fetching error:', error));
   }, []);
   
-  useEffect(() => {
-    const filtersActive = Object.values(filters).some(value => value);
-    const activeList = filtersActive ? filteredUsers : allUsers;
-    
-    setTotalItems(activeList.length);
-  
+  const updateDisplayedUsers = (data: User[]) => {
     const start = (currentPage - 1) * pageSize;
     const end = start + pageSize;
-    const paginatedItems = activeList.slice(start, end);
-    setPaginatedUsers(paginatedItems);
-  
-    if (currentPage > Math.ceil(activeList.length / pageSize)) {
-      setCurrentPage(1);
-    }
-  }, [currentPage, pageSize, users, allUsers, filteredUsers, filters]);
+    setFilteredUsers(data.slice(start, end));
+  };
   
 	
   const handlePageChange = (event: React.ChangeEvent<unknown>, page: number): void => {
@@ -472,7 +458,7 @@ const applyFilters = (): void => {
             </tr>
           </thead>
           <tbody>
-            {paginatedUsers.map((user) => (
+            {filteredUsers.map((user) => (
               <tr key={user.id}>
                 <td>{user.organization}</td>
                 <td>{user.fullName}</td>

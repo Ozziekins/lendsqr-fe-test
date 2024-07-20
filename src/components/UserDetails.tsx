@@ -121,7 +121,7 @@ const UserDetails: React.FC = () => {
   );
 
   useEffect(() => {
-    if (!userId) return;  // Ensure there is a userId to avoid fetching unnecessarily
+    if (!userId) return; 
 
   const fetchUserData = async () => {
     try {
