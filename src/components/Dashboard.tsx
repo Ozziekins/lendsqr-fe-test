@@ -292,12 +292,8 @@ const applyFilters = (): void => {
   
     try {
       // const response = await fetch(`http://localhost:5000/users/${userId}`, {
-      const response = await fetch(`/.netlify/functions/updateUser?id=${userId}`, {
+      const response = await fetch(`/.netlify/functions/updateUser?id=${userId}&status=${newStatus}`, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status: newStatus })
       });
   
       if (!response.ok) {
