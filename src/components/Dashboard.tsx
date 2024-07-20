@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Dashboard.module.scss';
 import usersIcon from '../assets/images/users.png';
@@ -192,7 +192,7 @@ const Dashboard: React.FC = () => {
     }
   }, []);
   
-  const handleSearchClickDirectly = (search: string) => {
+  const handleSearchClickDirectly = useCallback((search: string) => {
     if (search.trim() === "") {
       setPaginatedUsers(users); 
     } else {
@@ -204,7 +204,7 @@ const Dashboard: React.FC = () => {
       );
       setPaginatedUsers(filtered);
     }
-  };  
+  }, [users, allUsers]);  
 
   useEffect(() => {
     if (searchTerm && paginatedUsers.length > 0) {
