@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Dashboard.module.scss';
 import usersIcon from '../assets/images/users.png';
@@ -371,12 +371,12 @@ const applyFilters = (): void => {
       .catch(error => console.error('Fetching error:', error));
   }, []);
   
-  const updateDisplayedUsers = (data: User[]) => {
-    const start = (currentPage - 1) * pageSize;
-    const end = start + pageSize;
-    setFilteredUsers(data.slice(start, end));
-  };
-  
+  // const updateDisplayedUsers = (data: User[]) => {
+  //   const start = (currentPage - 1) * pageSize;
+  //   const end = start + pageSize;
+  //   setFilteredUsers(data.slice(start, end));
+  // };
+
 	
   const handlePageChange = (event: React.ChangeEvent<unknown>, page: number): void => {
     setCurrentPage(page);
