@@ -1,3 +1,49 @@
+![React badge](https://img.shields.io/badge/made%20with-React-blue?style=plastic&logo=react)
+[![Typescript](https://img.shields.io/badge/typed%20using-grey?style=plastic&logo=typescript)](https://www.typescriptlang.org/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fbf643a7-0388-43fd-8e21-6e377a40a724/deploy-status)](https://app.netlify.com/sites/ozziekins-lendsqr/deploys)<br>
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a>
+    <img src="./src/assets/images/logo.png" alt="Logo">
+  </a>
+
+<h1 align="center">Lendsqr Frontend Test Task</h1>
+
+  <p align="center">
+    By Ozioma Okonicha
+    <br />
+    <a href="https://github.com/Ozziekins/lendsqr-fe-test-task#readme"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="mailto:nenubariozioma@gmail.com">Contact</a>
+    ·
+    <a href="https://www.linkedin.com/in/ozioma-okonicha/">LinkedIn</a>
+  </p>
+
+
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#description">Description</a>
+    </li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#technologies-used">Technologies Used</a></li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installing">Installing</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#acknowledgments">Acknowledgements</a></li>
+  </ol>
+</details>
 
 # Lendsqr Management Dashboard
 
