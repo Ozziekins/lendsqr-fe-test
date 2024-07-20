@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Avenir+Next:wght@400;600;700&display=swap');
+
+.notFoundContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff;
+  font-family: 'Avenir Next', sans-serif;
+
+  .leftContainer, .rightContainer {
+    flex: 1; /* Make both containers take up equal space */
+  }
+
+  .rightContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leftContainer {
+    background-color: #f9f9f9;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+      height: 40px;
+      position: absolute;
+      top: 15%;
+      left: 15%;
+    }
+
+    .notFoundImage {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .messageContainer {
+    text-align: center;
+
+    h1 {
+      font-size: 80px;
+      color: #213F7D;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #545F7D;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+  }
+}
