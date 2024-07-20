@@ -192,12 +192,6 @@ const Dashboard: React.FC = () => {
     }
   }, []);
   
-  useEffect(() => {
-    if (searchTerm && paginatedUsers.length > 0) {
-      handleSearchClickDirectly(searchTerm);
-    }
-  }, [searchTerm, paginatedUsers]); 
-  
   const handleSearchClickDirectly = (search: string) => {
     if (search.trim() === "") {
       setPaginatedUsers(users); 
@@ -211,7 +205,13 @@ const Dashboard: React.FC = () => {
       setPaginatedUsers(filtered);
     }
   };  
-   
+
+  useEffect(() => {
+    if (searchTerm && paginatedUsers.length > 0) {
+      handleSearchClickDirectly(searchTerm);
+    }
+  }, [searchTerm, paginatedUsers, handleSearchClickDirectly]); 
+  
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     setAnchorEl(event.currentTarget);
     setSelectedUserId(id);
@@ -357,6 +357,7 @@ const applyFilters = (): void => {
         if (!Object.values(filters).some(value => value !== '')) {
           setFilteredUsers(data);
           setPaginatedUsers(data);
+          setAllUsers(data);
         }
 			})
 			.catch(error => console.error('Fetching error:', error));
@@ -385,7 +386,7 @@ const applyFilters = (): void => {
     if (currentPage > Math.ceil(activeList.length / pageSize)) {
       setCurrentPage(1);
     }
-  }, [currentPage, pageSize, users, filteredUsers, filters]);
+  }, [currentPage, pageSize, users, allUsers, filteredUsers, filters]);
   
 	
   const handlePageChange = (event: React.ChangeEvent<unknown>, page: number): void => {

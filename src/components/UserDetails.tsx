@@ -4,8 +4,6 @@ import { FaArrowLeft } from 'react-icons/fa';
 import Rating from '@mui/material/Rating';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import styles from '../styles/UserDetails.module.scss';

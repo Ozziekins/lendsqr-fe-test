@@ -37,7 +37,7 @@ const Login: React.FC = () => {
               />
               <span onClick={handleShowPassword}>{showPassword ? 'HIDE' : 'SHOW'}</span>
             </div>
-            <a href="#" className={styles.forgotPassword}>FORGOT PASSWORD?</a>
+            <a href="https://images.cartoonstock.com/lowres_800/computers-internet_security-log_on-passwords-password-forgotten_passwords-rman2179_low.jpg" className={styles.forgotPassword}>FORGOT PASSWORD?</a>
             <button type="submit">LOG IN</button>
           </form>
         </div>
