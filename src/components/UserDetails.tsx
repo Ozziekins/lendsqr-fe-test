@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaBars } from 'react-icons/fa';
 import Rating from '@mui/material/Rating';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -58,6 +58,9 @@ const UserDetails: React.FC = () => {
   const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>('');
   const [alertType, setAlertType] = useState<'success' | 'warning'>('success');
+
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -138,6 +141,15 @@ const UserDetails: React.FC = () => {
   fetchUserData();
 }, [userId]);
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const toggleSearch = () => {
+    setSearchOpen(!searchOpen);
+  };
+
+
   // if (!user) {
   //   return 
   //   <div className={dashstyles.dashboardContainer}>
@@ -149,8 +161,21 @@ const UserDetails: React.FC = () => {
 
   return (
     <div className={dashstyles.dashboardContainer}>
-      <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} onSearchClick={handleSearchClick} />
-      <DashboardSidebar />
+     {sidebarOpen && <div className={dashstyles.overlay} />}
+      <Header
+        searchTerm={searchTerm}
+        onSearchChange={handleSearchChange}
+        onSearchClick={handleSearchClick}
+        toggleSearch={toggleSearch}
+        searchOpen={searchOpen}
+      />
+      <div className={`${dashstyles.sidebarToggle} ${sidebarOpen ? dashstyles.hidden : ''}`}>
+        <FaBars onClick={toggleSidebar} />
+      </div>
+      <DashboardSidebar
+        isOpen={sidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
       <main className={styles.userDetailsContainer}>
         <div className={styles.backBtn} onClick={handleBackClick}>
           <FaArrowLeft className={styles.backIcon} />

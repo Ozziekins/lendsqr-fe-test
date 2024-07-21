@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaBell, FaCaretDown, FaSignOutAlt } from 'react-icons/fa';
-import { IconButton, Menu, MenuItem } from '@mui/material';
+import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import logo from '../assets/images/logo.png';
 import avatar from '../assets/images/avatar.png';
@@ -11,6 +11,8 @@ interface HeaderProps {
   searchTerm: string;
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSearchClick: () => void;
+  toggleSearch: () => void;
+  searchOpen: boolean;
 }
 
 const useStyles = makeStyles({
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange, onSearchClick }) => {
+const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange, onSearchClick, toggleSearch, searchOpen }) => {
   const classes = useStyles(); 
   const [profileMenuOpen, setProfileMenuOpen] = React.useState(false);
   const profileButtonRef = React.useRef(null);
@@ -58,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange, onSearchCli
   return (
     <header className={styles.header}>
       <img src={logo} alt="Lendsqr Logo" className={styles.logo} />
-      <div className={styles.search}>
+      <div className={`${styles.search} ${searchOpen ? styles.active : styles.hidden}`}>
         <input
           type="text"
           placeholder="Search for anything"
@@ -71,8 +73,14 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange, onSearchCli
         </button>
       </div>
       <div className={styles.profile}>
-        <a href="https://lendsqr.com/" className={styles.docs} target="_blank" rel="noopener noreferrer">Docs</a>
-      <div className={styles.notifications}>
+        <Typography 
+          className={`${styles.searchToggle} ${searchOpen ? styles.hidden : ''}`} 
+          onClick={toggleSearch}
+        >
+          Search
+        </Typography>
+        <a href="https://lendsqr.com/" className={`${styles.docs} ${searchOpen ? styles.hidden : ''}`} target="_blank" rel="noopener noreferrer">Docs</a>
+        <div className={`${styles.notifications} ${searchOpen ? styles.hidden : ''}`}>
           <FaBell className="bellIcon" />
         </div>
         <div className={styles.profileDetails}>

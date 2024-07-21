@@ -1,10 +1,10 @@
 .userDetailsContainer {
-  background-color: #f9f9f9;
-  min-height: 100vh;
+  // background-color: #f9f9f9;
+  // min-height: 100vh;
   margin-left: 350px;
   margin-top: 90px;
   padding: 20px;
-  width: calc(100% - 550px);
+  // width: calc(100% - 350px);
   font-family: 'Work Sans', sans-serif;
 
   .backBtn {
@@ -115,6 +115,10 @@
         width: 1px;
         height: 80px;
         background-color: #e0e0e0;
+
+        @media (max-width: 600px) {
+          display: none;
+        }
       }
 
       .userTier {
@@ -147,7 +151,9 @@
 
     .tabs {
       display: flex;
+      flex-wrap: wrap;
       width: 100%;
+      overflow-x: auto;
 
       .tab {
         padding: 10px 20px;
@@ -163,6 +169,12 @@
         &.active {
           border-bottom-color: #39cdcc;
         }
+
+        // @media (max-width: 600px) {
+        //   flex: 0 0 auto; 
+        //   font-size: 14px;
+        //   padding: 8px 12px;
+        // }
       }
     }
   }
@@ -210,6 +222,87 @@
       height: 1px;
       background-color: rgba(33, 63, 125, 0.1);
       margin: 25px 0;
+    }
+  }
+}
+
+/* Media query for small devices */
+@media (max-width: 1280px) {
+  .userDetailsContainer {
+    margin-left: 20px;
+    margin-top: 70px;
+    padding: 10px;
+
+    .headerRow {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .title {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .actions {
+        width: 100%;
+        justify-content: flex-start;
+
+        .blacklistButton,
+        .activateButton {
+          font-size: 12px;
+          padding: 8px 16px;
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .headerCard {
+      .userDetailsHeader {
+        .avatarContainer {
+          width: 80px;
+          height: 80px;
+        }
+
+        .userNameContainer {
+          .userName {
+            font-size: 18px;
+          }
+
+          .userId {
+            font-size: 12px;
+          }
+        }
+
+        .accountBalance {
+          .balance {
+            font-size: 18px;
+          }
+
+          .bankDetails {
+            font-size: 10px;
+          }
+        }
+      }
+
+      .tabs {
+        .tab {
+          font-size: 14px;
+          padding: 8px 12px;
+        }
+      }
+    }
+
+    .infoCard {
+      .infoGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .sectionTitle {
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 14px;
+      }
     }
   }
 }

@@ -28,6 +28,11 @@ import {
   FaChevronDown,
 } from 'react-icons/fa';
 
+interface DashboardSidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
+
 const useStyles = makeStyles({
   menuPaper: {
     boxShadow: '3px 5px 20px rgba(0, 0, 0, 0.04)',
@@ -56,7 +61,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DashboardSidebar: React.FC = () => {
+const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ isOpen, toggleSidebar }) => {
   const classes = useStyles(); 
   const [activeItem, setActiveItem] = useState<string>('Users');
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -72,6 +77,7 @@ const DashboardSidebar: React.FC = () => {
     else {
       setActiveItem(itemName);
     }
+    toggleSidebar();
   };
 
   const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -87,7 +93,7 @@ const DashboardSidebar: React.FC = () => {
   };
 
   return (
-    <nav className={styles.sidebar}>
+    <nav className={`${styles.sidebar} ${isOpen ? styles.active : styles.hidden}`}>
       <ul>
         <li
           className={`${styles.navItem}  ${styles.switchOrganization}`}

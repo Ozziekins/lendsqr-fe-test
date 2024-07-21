@@ -5,7 +5,7 @@ import usersIcon from '../assets/images/users.png';
 import activeUsersIcon from '../assets/images/active_users.png';
 import usersWithLoansIcon from '../assets/images/users_with_loans.png';
 import usersWithSavingsIcon from '../assets/images/users_with_savings.png';
-import { FaFilter, FaEllipsisV, FaEye, FaUserTimes, FaUserCheck } from 'react-icons/fa';
+import { FaFilter, FaEllipsisV, FaEye, FaUserTimes, FaUserCheck, FaBars } from 'react-icons/fa';
 import { Menu, MenuItem, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Header from './Header';
@@ -161,6 +161,9 @@ const Dashboard: React.FC = () => {
     status: ''
   });
 
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -181,6 +184,7 @@ const Dashboard: React.FC = () => {
       );
       setFilteredUsers(filtered);
     }
+    toggleSearch();
   };
 
   useEffect(() => {
@@ -388,10 +392,31 @@ const applyFilters = (): void => {
     setCurrentPage(1); 
   };
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const toggleSearch = () => {
+    setSearchOpen(!searchOpen);
+  };
+
   return (
     <div className={styles.dashboardContainer}>
-      <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} onSearchClick={handleSearchClick} />
-      <DashboardSidebar />
+     {sidebarOpen && <div className={styles.overlay} />}
+      <Header
+        searchTerm={searchTerm}
+        onSearchChange={handleSearchChange}
+        onSearchClick={handleSearchClick}
+        toggleSearch={toggleSearch}
+        searchOpen={searchOpen}
+      />
+      <div className={`${styles.sidebarToggle} ${sidebarOpen ? styles.hidden : ''}`}>
+        <FaBars onClick={toggleSidebar} />
+      </div>
+      <DashboardSidebar
+        isOpen={sidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
       <main className={styles.mainContent}>
         <h1>Users</h1>
         <div className={styles.stats}>

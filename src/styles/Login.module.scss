@@ -5,6 +5,7 @@
   min-height: 100vh;
   background-color: #fff;
   font-family: 'Avenir Next', sans-serif; 
+  flex-direction: row;
 
   .leftContainer, .rightContainer {
     flex: 1; /* Make both containers take up equal space */
@@ -118,5 +119,41 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+/* Media query for small devices */
+@media (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column;
+  }
+
+  .leftContainer, .rightContainer {
+    flex: 1, 2;
+  }
+
+  .leftContainer {
+    order: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .logo {
+      align-self: flex-start;
+
+    }
+
+    .loginImage {
+      margin-top: 15%;
+      width: 50%;
+      height: auto;
+    }
+  }
+
+  .rightContainer {
+    order: 2;
+  }
+
+  .formContainer {
+    width: 90%;
   }
 }
