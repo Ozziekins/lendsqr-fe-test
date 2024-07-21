@@ -102,7 +102,7 @@ A step-by-step to get a development environment running:
 The server will start running on `http://localhost:3000/`.
 
 ## Usage
-[![Watch the video](./src/assets/lendsqr.gif)](https://www.loom.com/share/your_loom_video_id)
+[![Watch the video](./src/assets/lendsqr.gif)](https://www.loom.com/share/6c76d59b21fc4cb4813ab8d4ee4153ca?sid=5be8a2d9-f4a5-4179-ab93-a8813c81fe3c)
 
 Click on the GIF above to watch a full usage tutorial!
 
