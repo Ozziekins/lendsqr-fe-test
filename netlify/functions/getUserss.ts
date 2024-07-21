@@ -1,6 +1,7 @@
-const data = require('../../db.json');
+import { Handler } from '@netlify/functions';
+import data from '../../db.json';
 
-exports.handler = async () => {
+export const handler: Handler = async (event, context) => {
   return {
     statusCode: 200,
     headers: {

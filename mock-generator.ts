@@ -1,13 +1,51 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const dataPath = path.join(__dirname, 'db.json');
-const rawData = fs.readFileSync(dataPath);
+interface Guarantor {
+  fullName: string;
+  phoneNumber: string;
+  emailAddress: string;
+  relationship: string;
+}
+
+interface User {
+  id: number;
+  organization: string;
+  username: string;
+  email: string;
+  phoneNumber: string;
+  dateJoined: string;
+  status: string;
+  fullName: string;
+  userId: string;
+  rating: number;
+  accountBalance: string;
+  bankDetails: string;
+  bvn: string;
+  gender: string;
+  maritalStatus: string;
+  children: string;
+  typeOfResidence: string;
+  levelOfEducation: string;
+  employmentStatus: string;
+  sectorOfEmployment: string;
+  durationOfEmployment: string;
+  officeEmail: string;
+  monthlyIncome: string;
+  loanRepayment: string;
+  twitter: string;
+  facebook: string;
+  instagram: string;
+  guarantor: Guarantor;
+}
+
+const dataPath = path.join(__dirname, 'dbb.json');
+const rawData = fs.readFileSync(dataPath, { encoding: 'utf-8' });
 const data = JSON.parse(rawData);
 
-const generateUser = (id) => {
+const generateUser = (id: number): User => {
   return {
-    id: id,
+    id,
     organization: "ExampleOrg",
     username: `user${id}`,
     email: `user${id}@example.com`,
