@@ -18,15 +18,15 @@
     <a href="https://github.com/Ozziekins/lendsqr-fe-test#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="mailto:nenubariozioma@gmail.com">Contact</a>
+    <a href="mailto:nenubariozioma@gmail.com">Contact 📧</a>
     ·
-    <a href="https://ozioma-okonicha-lendsqr-fe-test.netlify.app/">Demo</a>
+    <a href="https://ozioma-okonicha-lendsqr-fe-test.netlify.app/">Demo 👀</a>
   </p>
 
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary>Table of Contents 📑</summary>
   <ol>
     <li>
       <a href="#description">Description</a>
@@ -46,10 +46,12 @@
   </ol>
 </details>
 
-# Lendsqr Management Dashboard
+# Lendsqr Management Dashboard 📊
 
 ## Description
 This Management Dashboard is a simple, intuitive tool designed to manage user data effectively. It allows administrators to view, filter, and manage users based on various criteria such as organization affiliation, status, and personal information. This dashboard is built with React, using Material-UI for the front-end components, ensuring a responsive and accessible user interface.
+
+> Read more about it [here](https://sulfuric-brochure-f82.notion.site/Lendsqr-Management-Dashboard-Documentation-968a4e193393414dbf45dbb446b19445?pvs=74).
 
 ## Features
 - **Dynamic User Filtering:** Filter users by organization, status, name, and more.
@@ -108,6 +110,6 @@ Click on the GIF above to watch a full usage tutorial!
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
 ## Acknowledgments
-- Lendsqr HR team for providing this task 
+- Lendsqr HR team for providing this task 🙏🏾
 
 ---
