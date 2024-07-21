@@ -1,6 +1,7 @@
 ![React badge](https://img.shields.io/badge/made%20with-React-blue?style=plastic&logo=react)
 [![Typescript](https://img.shields.io/badge/typed%20using-grey?style=plastic&logo=typescript)](https://www.typescriptlang.org/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fbf643a7-0388-43fd-8e21-6e377a40a724/deploy-status)](https://app.netlify.com/sites/ozziekins-lendsqr/deploys)<br>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fbf643a7-0388-43fd-8e21-6e377a40a724/deploy-status)](https://app.netlify.com/sites/ozioma-okonicha-lendsqr-fe-test/deploys)
+<br>
 
 <!-- PROJECT LOGO -->
 <br />
@@ -14,12 +15,12 @@
   <p align="center">
     By Ozioma Okonicha
     <br />
-    <a href="https://github.com/Ozziekins/lendsqr-fe-test-task#readme"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Ozziekins/lendsqr-fe-test#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="mailto:nenubariozioma@gmail.com">Contact</a>
     ·
-    <a href="https://ozziekins-lendsqr.netlify.app/">Demo</a>
+    <a href="https://ozioma-okonicha-lendsqr-fe-test.netlify.app/">Demo</a>
   </p>
 
 
@@ -77,7 +78,7 @@ A step-by-step to get a development environment running:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Ozziekins/lendsqr-fe-test-task.git
+   git clone https://github.com/Ozziekins/lendsqr-fe-test.git
    ```
 2. **Navigate to project directory**
    ```bash

@@ -4,7 +4,7 @@ import { FaSearch, FaBell, FaCaretDown, FaSignOutAlt } from 'react-icons/fa';
 import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import logo from '../assets/images/logo.png';
-import avatar from '../assets/images/avatar.png';
+import avatar from '../assets/images/avatar.jpg';
 import styles from '../styles/Dashboard.module.scss'; 
 
 interface HeaderProps {
@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ searchTerm, onSearchChange, onSearchCli
           <FaBell className="bellIcon" />
         </div>
         <div className={styles.profileDetails}>
-          <span className={styles.profileName}>Adedeji</span>
+          <span className={styles.profileName}>Ozioma</span>
           <img src={avatar} alt="Profile" className={styles.profileImage} />
           <IconButton
             ref={profileButtonRef}
